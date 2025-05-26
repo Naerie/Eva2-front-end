@@ -32,7 +32,7 @@ function validar(){
 }
 
 function vTexto(elemento,valor, error){
-    let regex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/
+    let regex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ]+$/
     if (valor.length > 0 && regex.test(valor)){
         elemento.style.background = "green"
         elemento.style.color = "white"
@@ -48,7 +48,7 @@ function vTexto(elemento,valor, error){
 }
 
 function validarEmail(elemento, valor, error){
-    let regex = /^[a-z0-9._%+\-]+@[a-z0-9.\-]+\.(cl)$/
+    let regex = /^[a-z0-9._%+\-]+@[a-z0-9.\-]+\.(cl)$/i
     if (regex.test(valor) && valor.length > 0){
         elemento.style.background = "green"
         elemento.style.color = "white"
@@ -101,6 +101,36 @@ function actualizarFormulario(indice){
 }
 
 
-//  function actualizar(){
+function actualizar(){
+    let eNombreA = document.getElementById("nombre1")
+    let vNombre = eNombreA.value
+    let eEmailA = document.getElementById("email1")
+    let vEmail = eEmailA.value
+    let btnActualizar = document.getElementById("btn-actualizar")
+    let indice = btnActualizar.value
+    let formularioActualizar = document.getElementById("formularioActualizar")
+    let eErrorNombre = document.getElementById("errorNombre1")
+    let eErrorEmail = document.getElementById("errorEmail1")
+    let validacionN = vTexto(eNombreA, vNombre, eErrorNombre)
+    let validacionE = validarEmail(eEmailA, vEmail, eErrorEmail)
+    let formularioVisibilidad = false
 
-//  }
+    if (validacionN == "exito" && validacionE == "exito") {
+        personas = personas.map((p, index) => {
+            if(index == indice){
+                formularioVisibilidad = true
+                return {
+                    nombre: vNombre,
+                    email: vEmail
+                }
+            } else {
+                return p
+            }
+        })
+        if(formularioVisibilidad){
+            formularioActualizar.classList.add("visibilidad")
+        }
+
+        cargarDatos()
+    }
+}
