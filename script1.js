@@ -9,7 +9,6 @@ function validar(){
     let eEmail = document.getElementById("email")
     let vEmail = eEmail.value
     let eErrorNombre = document.getElementById("errorNombre")
-    let vErrorNombre = eErrorNombre.value
     let eErrorEmail = document.getElementById("errorEmail")
     let validacionN = vTexto(eNombre, vNombre, eErrorNombre)
     let validacionE = validarEmail(eEmail,vEmail,eErrorEmail)
@@ -20,8 +19,12 @@ function validar(){
         personas.push(p)    
         console.log(personas)  
     }
-    eNombre = ""
-    eEmail = ""
+    eNombre.value = ""
+    eEmail.value = ""
+    eNombre.style.background = ""
+    eEmail.style.background = ""
+    eEmail.style.color = ""
+    eNombre.style.color = ""
     cargarDatos()
 
 
@@ -80,11 +83,10 @@ function eliminar(indice){
     }
     
 
-// }
-
-// function actualizarFormulario(){
-
-// }
+function actualizarFormulario(){
+    let formularioActualizar = document.getElementById("formularioActualizar")
+    formularioActualizar.classList.remove("visibilidad")
+}
 //  function actualizar(){
 
 //  }
