@@ -14,69 +14,77 @@ function validar(){
     let validacionN = vTexto(eNombre, vNombre, eErrorNombre)
     let validacionE = validarEmail(eEmail,vEmail,eErrorEmail)
     if (validacionN == "exito" && validacionE =="exito"){
-        let p = {"nombre": vNombre, "email":vEmail}
-        personas.push(p)    
-        console.log(p)
+        let p = {"nombre": vNombre, "email":vEmail} 
     }
-    cargarDatos()
+    
+    personas.push(p)    
+    console.log(p)
     vNombre = ""
     vEmail = ""
+    cargarDatos()
 
 
 }
 
 function vTexto(elemento,valor, error){
-    let largo = valor.lenght
-    if (largo > 0){
+    let regex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/
+    if (valor.length > 0 && regex.test(valor)){
         elemento.style.background = "green"
         elemento.style.color = "white"
+        error.innerText = ""
         return "exito"
     } else{
         elemento.style.background = "red"
         elemento.style.color = "white"
-        error.innerText = "debe contener solo letras y no ser vacio"
+        error.innerText = "Debe contener solo letras y no ser vacio"
         return "fallo"
     }
 
 }
 
 function validarEmail(elemento, valor, error){
-    let pattern = "[a-z0-9._%+\-]+@[a-z0-9.\-]+\.cl$"
-    if (valor != pattern){
+    let regex = /^[a-z0-9._%+\-]+@[a-z0-9.\-]+\.(cl)$/
+    if (regex.test(valor) && valor.length > 0){
+        elemento.style.background = "green"
+        elemento.style.color = "white"
+        error.innerText = ""
+        return "exito"
+        
+    }
+    else{
         elemento.style.background = "red"
         elemento.style.color = "white"
         error.innerText = "Debe tener solo un @ y terminar en .cl"
         return "fallo"
     }
-    else{
-        elemento.style.background = "green"
-        elemento.style.color = "white"
-        return "exito"
-    }
 }
 
-function cargarDatos(){
-    let mapPersonas = personas.map((p,index)=>){
 
-    }
+// function cargarDatos(){
+//     let mapPersonas = personas.map((p,index)=>{
+//         return ""
+//     })
+// }
+
+// 
 
 
 
-}
+// }
 
-function eliminar(indice){
-    for personas.filter(p, indice){
-        if (index != indice){
-            return p
-        }
-    }
+// function eliminar(indice){
+//     for personas.filter(p, indice){
+//         if (index != indice){
+//             return p
+//         }
+//     }
     
 
-}
+// }
 
-function actualizarFormulario(){
+// function actualizarFormulario(){
 
-}
- function actualizar(){
+// }
+//  function actualizar(){
 
- }
+//  }
