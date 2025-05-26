@@ -70,18 +70,14 @@ function cargarDatos(){
     cuerpoTabla.innerHTML = cuerpoTablaStr
 }
 
-// 
-
-
-
-// }
-
-// function eliminar(indice){
-//     for personas.filter(p, indice){
-//         if (index != indice){
-//             return p
-//         }
-//     }
+function eliminar(indice){
+    personas = personas.filter((p, index)=>{
+        if (index != indice){
+            return p
+        }
+    })
+    cargarDatos()
+    }
     
 
 // }
