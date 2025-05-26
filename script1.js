@@ -17,14 +17,15 @@ function validar(){
             "nombre": vNombre, 
             "email":vEmail} 
         personas.push(p)    
-        console.log(personas)  
+        console.log(personas) 
+        eNombre.value = ""
+        eEmail.value = ""
+        eNombre.style.background = ""
+        eEmail.style.background = ""
+        eEmail.style.color = ""
+        eNombre.style.color = "" 
     }
-    eNombre.value = ""
-    eEmail.value = ""
-    eNombre.style.background = ""
-    eEmail.style.background = ""
-    eEmail.style.color = ""
-    eNombre.style.color = ""
+    
     cargarDatos()
 
 
@@ -83,10 +84,23 @@ function eliminar(indice){
     }
     
 
-function actualizarFormulario(){
+function actualizarFormulario(indice){
     let formularioActualizar = document.getElementById("formularioActualizar")
+    let eNombreA = document.getElementById("nombre1")
+    let eEmailA = document.getElementById("email1")
     formularioActualizar.classList.remove("visibilidad")
+    let persona = personas.filter((p, index)=>{
+        if (indice == index){
+            return p
+        }
+    })
+    eNombreA.value =persona[0].nombre
+    eEmailA.value = persona[0].email 
+    let btnActualizar = document.getElementById("btn-actualizar")
+    btnActualizar.value = indice
 }
+
+
 //  function actualizar(){
 
 //  }
