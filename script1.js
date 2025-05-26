@@ -14,13 +14,14 @@ function validar(){
     let validacionN = vTexto(eNombre, vNombre, eErrorNombre)
     let validacionE = validarEmail(eEmail,vEmail,eErrorEmail)
     if (validacionN == "exito" && validacionE =="exito"){
-        let p = {"nombre": vNombre, "email":vEmail} 
+        let p = {
+            "nombre": vNombre, 
+            "email":vEmail} 
+        personas.push(p)    
+        console.log(personas)  
     }
-    
-    personas.push(p)    
-    console.log(p)
-    vNombre = ""
-    vEmail = ""
+    eNombre = ""
+    eEmail = ""
     cargarDatos()
 
 
@@ -36,7 +37,7 @@ function vTexto(elemento,valor, error){
     } else{
         elemento.style.background = "red"
         elemento.style.color = "white"
-        error.innerText = "Debe contener solo letras y no ser vacio"
+        error.innerText = "Debe contener solo letras y no estar vacio"
         return "fallo"
     }
 
@@ -60,11 +61,14 @@ function validarEmail(elemento, valor, error){
 }
 
 
-// function cargarDatos(){
-//     let mapPersonas = personas.map((p,index)=>{
-//         return ""
-//     })
-// }
+function cargarDatos(){
+    let mapPersonas = personas.map((p,index)=>{
+        return "<tr><td>"+p.nombre+"</td><td>"+p.email+"</td><td><button onclick='actualizarFormulario("+index+")'>Actualizar</button><button type='button' value='"+index+"' onclick='eliminar("+index+")'>Eliminar</button></td></tr>"
+    })
+    let cuerpoTabla = document.getElementById("cuerpoTabla")
+    let cuerpoTablaStr = mapPersonas.join("")
+    cuerpoTabla.innerHTML = cuerpoTablaStr
+}
 
 // 
 
