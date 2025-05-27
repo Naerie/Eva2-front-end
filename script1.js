@@ -75,11 +75,15 @@ function cargarDatos(){
 }
 
 function eliminar(indice){
-    personas = personas.filter((p, index)=>{
+    if (confirm("Está seguro que desea eliminar esta fila")) {
+        personas = personas.filter((p, index)=>{
         if (index != indice){
             return p
         }
     })
+        } 
+
+    
     cargarDatos()
     }
     
