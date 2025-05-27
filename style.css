@@ -1,7 +1,40 @@
 body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: 30px;
 }
 
 .visibilidad{
     display: none;
+}
+
+table{
+        border-collapse: collapse;
+        margin-top: 20px;
+        margin-bottom: 20px;
+
+}
+thead {
+    background-color: #e2697d;
+
+}
+
+th, td {
+    border: 1px solid #e2697d;
+    padding: 10px;
+    text-align: left;
+    
+}
+
+th {
+    font-weight: bold;
+    text-align: center;
+}
+
+button{
+    margin-left: 2px;
+    margin-right: 5px;
+}
+
+h1,h2{
+    text-transform: uppercase;
 }
