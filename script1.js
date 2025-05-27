@@ -72,6 +72,7 @@ function cargarDatos(){
     let cuerpoTabla = document.getElementById("cuerpoTabla")
     let cuerpoTablaStr = mapPersonas.join("")
     cuerpoTabla.innerHTML = cuerpoTablaStr
+    console.log(personas)
 }
 
 function eliminar(indice){
