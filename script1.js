@@ -119,6 +119,10 @@ function actualizar(){
         personas = personas.map((p, index) => {
             if(index == indice){
                 formularioVisibilidad = true
+                eNombreA.style.background = ""
+                eEmailA.style.background = ""
+                eEmailA.style.color = ""
+                eNombreA.style.color = ""
                 return {
                     nombre: vNombre,
                     email: vEmail
@@ -133,4 +137,8 @@ function actualizar(){
 
         cargarDatos()
     }
+}
+
+function cancelarAct(){
+    formularioActualizar.classList.add("visibilidad")
 }
